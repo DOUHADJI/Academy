@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://drive.google.com/file/d/145mm8LqLJ3xgOdFEEZ-1VzCCDMPHR6qI/view" width="400" alt="academy Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://raw.githubusercontent.com/DOUHADJI/academy/main/public/images/GU-logo.webp" width="400" alt="academy Logo"></a></p>
 
 
 
