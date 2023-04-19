@@ -1,0 +1,16 @@
+
+@import url("../../public/css/flaticon.css");
+@import url("../../public/css/fontawesome-all.min.css");
+@import url("../../public/css/themify-icons.css");
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0;
+    height: auto;
+    margin-top: -3px;
+}
