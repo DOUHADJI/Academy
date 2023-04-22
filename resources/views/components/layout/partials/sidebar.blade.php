@@ -1,4 +1,4 @@
-@aware(['center'])
+@aware(['title'])
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar elevation-4 sidebar-dark-teal bg-green-900">
@@ -13,6 +13,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image py-6">
+                
                 {{-- <i class="fa fa-user text-white text-lg"></i> --}}
                 {{-- <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> --}}
             </div>
@@ -53,7 +54,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview ">
-                            <x-layout.partials.nested-nav-item title="En cours" route="showYear" />
+                            <x-layout.partials.nested-nav-item nav-title="En cours" route="showYear" />
 
                         </ul>
 
@@ -71,13 +72,16 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                    <x-layout.partials.nav-item title="Profil etudiant" route="showStudent" icon="fa fa-home" />
+                    <x-layout.partials.nav-item 
+                    route-title="Espace étudiant - Mes informations" 
+                    nav-title="Profil etudiant" 
+                    route="showStudent" icon="fa fa-home"  />
                    
                     @if($has_admissions())
-                    <x-layout.partials.nav-item title="Choix de parcours" route="seeAdmission"
+                    <x-layout.partials.nav-item route-title="ti" nav-title="Choix de parcours" route="seeAdmission"
                     icon="fa fa-graduation-cap" />
                     @else
-                    <x-layout.partials.nav-item title="Choix de parcours" route="showAdmission"
+                    <x-layout.partials.nav-item route-title="ti" nav-title="Choix de parcours" route="showAdmission"
                             icon="fa fa-graduation-cap" />
                     @endif
                     

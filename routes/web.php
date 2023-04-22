@@ -51,45 +51,46 @@ Route::get('/', function () {
     Route::get('/logout',[LoginController::class,"logout"]) -> middleware("auth") -> name("handleLogout");
 
  /**
- * Authenticated routes and Student profil is uncomplete
+ * Authenticated   Student routes 
  */
 
-
- Route::middleware(['auth']) -> group( function()
+ Route::middleware(['auth', "student"]) -> group( function()
  {
-    Route::controller(StudentInformationsController::class) -> group( function()
-    {
-     //   Route::get('/enregistrer-informations-identite-adresse-scolarite-etudiant', 'show') ->name('updateStudent');
-      //  Route::post('/enregistrer-informations-identite-adresse-scolarite-etudiant', 'store') ->name('storeStudent');
-
-    });
- });
-
-/**
- * Authenticated routes and Student profil is complete
- */
-
-
- Route::middleware(['auth'/* ,EnsureStudentInfosComplete::class */]) -> group( function()
- {
+    /**
+    * Student profil is uncomplete
+    */
     Route::controller(StudentInformationsController::class) -> group( function()
     {
         Route::get('/enregistrer-informations-identite-adresse-scolarite-etudiant', 'show') ->name('updateStudent');
         Route::post('/enregistrer-informations-identite-adresse-scolarite-etudiant', 'store') ->name('storeStudent');
 
-        Route::get('/informations-identite-adresse-scolarite-etudiant', 'index') ->name('showStudent');
-
     });
 
-    Route::controller(AdmissionController::class)->group(function ()
+    /**
+    *  student profil complete 
+    */
+
+    Route::middleware('studentProfilComplete') -> group( function()
     {
-       Route::get("/choix-de-parcours","index" ) ->name("showAdmission"); 
-       Route::get("/choix-de-parcours/resume", "seeAdmission") -> name("seeAdmission");
-       Route::post("/choix-de-parcours", "storeAdmission") -> name("storeAdmission");
-       Route::get("/cv","cv")->name("seeCV"); 
+        Route::controller(StudentInformationsController::class) -> group( function()
+        {    
+            Route::get('/informations-identite-adresse-scolarite-etudiant', 'index') ->name('showStudent');
+        });
+    
+        Route::controller(AdmissionController::class)->group(function ()
+        {
+           Route::get("/choix-de-parcours","index" ) ->name("showAdmission"); 
+           Route::get("/choix-de-parcours/resume", "seeAdmission") -> name("seeAdmission");
+           Route::post("/choix-de-parcours", "storeAdmission") -> name("storeAdmission");
+           Route::get("/cv","cv")->name("seeCV"); 
+        });
+        
     });
-
+    
+   
  });
+
+
 
 
 
@@ -102,7 +103,7 @@ Route::get('/tableau-de-bord', [UserController::class, 'index']) -> middleware('
 /**
  * Admin panel routes
  */
-Route::middleware('auth') -> prefix('backoffice') -> group( function()
+Route::middleware(["auth", "admin"]) -> prefix('backoffice') -> group( function()
 {
    Route::controller(PanelController::class) -> group(function()
    {
