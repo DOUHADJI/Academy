@@ -84,6 +84,9 @@ Route::get('/', function () {
     Route::controller(AdmissionController::class)->group(function ()
     {
        Route::get("/choix-de-parcours","index" ) ->name("showAdmission"); 
+       Route::get("/choix-de-parcours/resume", "seeAdmission") -> name("seeAdmission");
+       Route::post("/choix-de-parcours", "storeAdmission") -> name("storeAdmission");
+       Route::get("/cv","cv")->name("seeCV"); 
     });
 
  });
@@ -148,3 +151,11 @@ Route::middleware('auth') -> prefix('backoffice') -> group( function()
   
    
 }); 
+
+
+/**
+ * 
+ * utiliser laravel echo et pusher
+ * Firebase cloud messages 
+ * Pour le CI github actions
+ */

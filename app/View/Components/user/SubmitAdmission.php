@@ -9,7 +9,7 @@ use Illuminate\View\Component;
 
 class SubmitAdmission extends Component
 {
-    public  $firstChoice = "null";
+    
     /**
      * Create a new component instance.
      */
@@ -23,11 +23,10 @@ class SubmitAdmission extends Component
         return Schedule::all();
     }
 
-    public function setFirst($id)
+    public function has_admissions()
     {
-         $result = Schedule::whereId($id) -> first();
+        
          
-         $this -> firstChoice = $result;
     }
 
     /**

@@ -2,8 +2,10 @@
 
 namespace App\View\Components\layout\partials;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Sidebar extends Component
@@ -14,6 +16,19 @@ class Sidebar extends Component
     public function __construct()
     {
         //
+    }
+
+    public function has_admissions():bool
+    {
+        $admissions = User::whereId(Auth::id())->first() ->admissions;
+
+        if(isset($admissions))
+        {
+            return true;
+        }
+
+        return false;
+        
     }
 
     /**

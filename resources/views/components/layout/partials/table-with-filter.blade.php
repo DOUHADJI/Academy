@@ -1,5 +1,5 @@
-<table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
-                        aria-describedby="example1_info">
+<table id="{{ $tableId }}" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
+                        aria-describedby="{{ $tableId }}_info">
                         <thead>
                             <tr role="row">
                                {{ $headers }}
