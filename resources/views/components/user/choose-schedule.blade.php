@@ -1,5 +1,5 @@
 <div>
-    @if($studentChooseSchedule)
+    @if($studentChooseSchedule=="non")
     <div class="animate-bounce delay-500 border px-6 py-2 border-warning rounded mb-4">
         <p class="font-bold">
             <i class="fa fa-user"></i>
@@ -11,16 +11,17 @@
     @endif
     <div class="elevation-2 p-12">
         <p class="font-bold text-lg">
-            @if($studentChooseSchedule)
+            @if($studentChooseSchedule=="non")
             S'inscrire dans un parcours
             @else
             S'inscrire dans les unités d'enseignement
+
             @endif
         </p>
         <hr class="my-8" />
 
-        @if($studentChooseSchedule)
-        <div class="grid">
+        @if($studentChooseSchedule == "non")
+        <div class="grid text-black">
             @foreach ($admissions as $admission )
             <div class="flex flex-wrap justify-around gap-2 py-6 border border-secondary rounded mb-3">
                 <div class="p-3">
@@ -55,13 +56,13 @@
         </div>
         @endif
 
-        @if(!$studentChooseSchedule)
+        @if($studentChooseSchedule == "oui")
         <div>
             <div class="border-2 border-gray-500 px-4 py-2 w-fit h-full text-gray-600 
                  border-blue-500 bg-white  ">
                 <p>
                     <span class="fa fa-graduation-cap"></span>
-                    {{ $inscription->schedule->id }}
+                    {{ $inscription->schedule->titre_diplome }}
                 </p>
 
             </div>
@@ -111,9 +112,7 @@
                                             </td>
                                             <td>
                                                 <div class="px-4">
-                                                    <input class="form-control" name="{{ $offer->id }}" 
-                                                    type="checkbox" 
-                                                    value="{{ $offer->id }}">                                  
+                                                    <input class="form-control" name="{{ $offer->id }}" type="checkbox" value="{{ $offer->id }}">
                                                 </div>
                                             </td>
                                         </tr>

@@ -35,7 +35,8 @@ class StudentScheduleController extends Controller
                 "code" => time(),
                 "status" => "pending",
                 "school_year_id" => $school_year->id,
-                "user_id" => Auth::id()
+                "user_id" => Auth::id(),
+                "schedule_id" => $request->inscription_id
             ]);
             
             $inputs =  $request->collect()->except("_token","inscription_id");

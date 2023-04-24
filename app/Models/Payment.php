@@ -15,7 +15,8 @@ class Payment extends Model
         "code",
         "status",
         "school_year_id",
-        "user_id"
+        "user_id",
+        "schedule_id"
     ];
 
     public function school_year(): BelongsTo

@@ -22,16 +22,16 @@ class ChooseSchedule extends Component
 
     public function studentChooseSchedule()
     {
-        $choice = StudentSchedule::where("user_id", Auth::id()) -> exists();
-        dd($choice);
-        return $choice;
+        $choice = StudentSchedule::where("user_id", Auth::id())->exists();
+        // dd($choice);
+       // return $choice;
         
-       /*  if($choice)
+        if($choice)
         {
-            return true;
+            return "oui";
         }
 
-        return false; */
+        return "non";
     }
 
     public function admissions()

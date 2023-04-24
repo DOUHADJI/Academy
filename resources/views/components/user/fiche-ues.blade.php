@@ -1,8 +1,8 @@
 <div class="elevation-2 p-12 bg-white">
 
-    <div class="border">
+    <div class="border bg-gray-100/25">
 
-        <div class=" ">
+        <div class="">
             <div class="flex justify-around items-center py-2">
                 <div>
                     <p class="font-bold text-lg text-center">
@@ -30,7 +30,7 @@
             <hr class="mt-2 mb-8" />
 
             <div>
-                <div class="px-8 py-6 text-gray-600">
+                <div class="px-8 py-6 text-gray-600 ">
                     <div class=" w-full">
                         <div class="flex justify-between items-center my-4 w-full pl-8 ">
                             <img src="{{ Storage::url($payment->student->infos->avatar) }}" alt="avatar" class="object-cover h-44 w-32 " />
@@ -47,7 +47,7 @@
 
                     </div>
 
-                    <div class="grid border-y border-l md:grid-cols-3">
+                    <div class="grid border-y border-l md:grid-cols-3 ">
                         <div class="border-r h-full col-span-2">
                             <p class="text-gray-700 text-lg py-2 border-b font-bold text-center">
                                 <i class="fa fa-user text-lg"></i>
@@ -241,20 +241,22 @@
                 </div>
             </div>
 
-            <hr class="my-6" />
-            <div>
-                <p>  
-                    <span class="font-bold mr-2">Parcours</span>
-                    {{-- <span>{{ $payment->schedule->titre_diplome }}</span> --}}
+            
+            <div class="py-2 border-y">
+                <p class="px-12 text-lg text-center">  
+                    <span class="font-bold mr-2">
+                        <i class="fa fa-graduation-cap"></i>
+                    </span>
+                    <span>{{ $payment->schedule->titre_diplome }}</span>
                 </p>
             </div>
-            <hr/>
-            <div>
-                <p class="font-bold text-center text-lg">
-                    Unité d'enseignements
+           
+            <div class="border-b mb-6 bg-gray-100/25">
+                <p class="font-bold text-center text-lg py-2">
+                    Unités d'enseignements
                 </p>
             </div>
-            <hr class="my-6" />
+            
 
             <div class="px-12">
                 @php
