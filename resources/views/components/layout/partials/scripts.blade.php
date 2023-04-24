@@ -106,3 +106,12 @@
     })
 </script>
 
+@if(Route::currentRouteName()== "showAdmissions")
+  <script>
+    $("#admissionsTable").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  </script>
+@endif
+

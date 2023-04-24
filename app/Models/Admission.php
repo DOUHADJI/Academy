@@ -18,12 +18,39 @@ class Admission extends Model
       "releve_bepc",
       "releve_bac_1",
       "releve_bac_2",
-      "lettre_motivation"  
+      "lettre_motivation",
+      "treated" 
     ];
+
+    public function accepted() 
+    {
+        if($this -> role == "accepted" )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function refused()
+    {
+        if($this -> role == "refused" )
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
 
 
     public function schedule():BelongsTo
     {
         return $this -> belongsTo(Schedule::class, "schedule_id");
+    }
+
+    public function student():BelongsTo
+    {
+        return $this -> belongsTo(User::class, "user_id");
     }
 }

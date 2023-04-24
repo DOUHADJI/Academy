@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Storage;
 
 class AdmissionController extends Controller
 {
+    /**
+     * Student routes 
+     */
     public function index()
     {
         return view("user.submit-admission");
@@ -99,7 +102,7 @@ class AdmissionController extends Controller
       {
         $_admission = $paths;
         
-        $_admission['status'] = 'recieved';
+        $_admission['status'] = 'received';
         $_admission["schedule_id"] = $schedule;
         $_admission["user_id"] = Auth::id();      
 
@@ -121,5 +124,51 @@ class AdmissionController extends Controller
     public function seeAdmission(Request $request)
     {
         return view("user.see-admission-infos");   
+    }
+
+    /**
+     * Admin Routes
+     */
+
+     public function show(Request $request)
+     {
+        $id = $request -> admissionId;
+        
+        if(isset($id))
+        {
+            $admission = Admission::whereId($id) -> first();
+            
+            return view("admin.check-admission", [
+                "admission" => $admission
+            ]);
+        }
+        
+        return view('admin.show-admissions');
+     }
+
+     public function all()
+     {
+        return view('admin.all-admissions');
+     }
+
+    public function treatAdmission(Request $request)
+    {
+        $request -> validate([
+            "decision" => ["required"],
+            "admissionId" => ["required"]
+        ]);
+
+        $admission = Admission::whereId($request -> admissionId) -> first();
+        
+        $admission -> update([
+            "status" => $request -> decision,
+            "treated" => true
+        ]);
+
+        return redirect()->route("showAdmissions",[
+            "admissionId" => $admission -> id 
+        ]);
+
+        
     }
 }

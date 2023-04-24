@@ -1,14 +1,15 @@
 <?php
 
-namespace App\View\Components\layout\partials;
+namespace App\View\Components\user;
 
-use App\Models\User;
+use App\Models\Inscription;
+use App\Models\Payment;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class Sidebar extends Component
+class FicheUes extends Component
 {
     /**
      * Create a new component instance.
@@ -18,17 +19,9 @@ class Sidebar extends Component
         //
     }
 
-    public function has_admissions():bool
+    public function payment()
     {
-        $admissions = User::whereId(Auth::id())->first()->admissions;
-
-        if(isset($admissions))
-        {
-            return true;
-        }
-
-        return false;
-        
+        return Payment::where('user_id', Auth::id())->orderby('school_year_id', "desc")->first();
     }
 
     /**
@@ -36,6 +29,7 @@ class Sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.layout.partials.sidebar');
+        return view('components.user.fiche-ues');
     }
+
 }

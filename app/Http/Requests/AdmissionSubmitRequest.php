@@ -29,8 +29,8 @@ class AdmissionSubmitRequest extends FormRequest
     {
         return [
             "firstChoice" => ["required"],
-            "secondChoice" => ["required"],
-            "thirdChoice" => ["required"],
+            "secondChoice" => ["nullable"],
+            "thirdChoice" => ["nullable"],
             "lettre_motivation" => ["required", "file"],
             "cv" => ["required", "file"],
             "releve_bepc" => ["required", "file"],

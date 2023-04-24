@@ -18,10 +18,9 @@
         <h5>Admissions</h5>
 
         <p>
-            Vous devez choisir trois parcours
-            dans lesquels nous étudierons votre candidature.
-            Vous ne pourrez être admis que dans un seul parcours dans
-            lequel l'équipe d'admission vous aura jugé de vous inscrire.
+          Vous avez la possiblilité de choisir jusqu'à trois parcours 
+          dans lesquels, la commission d'admission étudiera vos dossiers.
+          Une réponse vous sera renvoyée au bout d'une semaine.
         </p>
     </div>
 </div>

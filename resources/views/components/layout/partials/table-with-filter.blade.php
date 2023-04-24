@@ -8,6 +8,10 @@
                         <tbody>
                             {{ $body }}
                         </tbody>
+
+                        <tfoot>
+                            {{ $slot }}
+                        </tfoot>
                         {{-- <tfoot>
                             <tr>
                                 <th rowspan="1" colspan="1">Sigle</th>

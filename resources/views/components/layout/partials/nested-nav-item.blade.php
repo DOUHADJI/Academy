@@ -1,6 +1,6 @@
 <li class="nav-item">
     <a href="{{ route($route) }}" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-      <p>{{  $title }}</p>
+        <i class="fa fa-circle  @if(Route::currentRouteName() == $route) text-green-400 @endif nav-icon"></i>
+        <p>{{ $navTitle }}</p>
     </a>
-  </li>>
+</li>

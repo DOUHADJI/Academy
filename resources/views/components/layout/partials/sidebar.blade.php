@@ -3,7 +3,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar elevation-4 sidebar-dark-teal bg-green-900">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link bg-yellow-200">
+    <a href="/" class="brand-link bg-yellow-200 py-4">
         <img src="{{ asset('images/GU-logo.webp') }}" alt="GU Logo" class="brand-image" style="opacity: .8">
         <span class="brand-text font-bold text-sm text-danger">{{ env('APP_NAME') }}</span>
     </a>
@@ -28,37 +28,30 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview ">
-                        <a href="{{ route('showSchools') }}"
-                            class="nav-link @if (Route::currentRouteName() == 'showSchools') active @endif">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Ecoles et facultes
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-
-                    </li>
+                    <x-layout.partials.nav-item 
+                    route-title="Backoffice - Ecoles et facultés" 
+                    nav-title="Ecoles et facultés" 
+                    route="showSchools" icon="fa fa-building"  />
 
 
-                    @php
-                        $routes = ['showYear', 'jj', 'jggg'];
-                    @endphp
+                    <x-layout.partials.nav-item-with-children 
+                        nav-title="Admissions" icon="fas fa-list-alt"
+                        page-title="Backoffice - Admissions" >
 
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link @if (array_search(Route::currentRouteName(), $routes) != null) active @endif">
-                            <i class="nav-icon fas fa-calendar"></i>
-                            <p>
-                                Année scolaire
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview ">
-                            <x-layout.partials.nested-nav-item nav-title="En cours" route="showYear" />
+                        <x-layout.partials.nested-nav-item nav-title="En attente" route="showAdmissions" />
+                        <x-layout.partials.nested-nav-item nav-title="All" route="allAdmissions" />
 
-                        </ul>
+                    </x-layout.partials.nav-item-with-children>
 
-                    </li>
+                    
+                    <x-layout.partials.nav-item-with-children 
+                        nav-title="Année scolaire" icon="fas fa-calendar"
+                        page-title="" >
+
+                        <x-layout.partials.nested-nav-item nav-title="En cours" route="showYear" />
+
+                    </x-layout.partials.nav-item-with-children>
+                   
 
                 </ul>
             </nav>
@@ -78,14 +71,20 @@
                     route="showStudent" icon="fa fa-home"  />
                    
                     @if($has_admissions())
-                    <x-layout.partials.nav-item route-title="ti" nav-title="Choix de parcours" route="seeAdmission"
+                    <x-layout.partials.nav-item route-title="Espace étudiant - Choix de parcours" nav-title="Choix de parcours" route="seeAdmission"
                     icon="fa fa-graduation-cap" />
                     @else
-                    <x-layout.partials.nav-item route-title="ti" nav-title="Choix de parcours" route="showAdmission"
+                    <x-layout.partials.nav-item route-title="Espace étudiant - Choix de parcours" nav-title="Choix de parcours" route="showAdmission"
                             icon="fa fa-graduation-cap" />
                     @endif
                     
+                    <x-layout.partials.nav-item route-title="Espace étudiant - Inscription" nav-title="Inscription" route="showInscription"
+                            icon="fa fa-id-badge" />
                     
+                    <x-layout.partials.nav-item route-title="Espace étudiant - Fiche UEs" 
+                    nav-title="Fiche d'UE" route="seeUes"
+                            icon="fa fa-file-alt" />
+                          
                    
                     
 

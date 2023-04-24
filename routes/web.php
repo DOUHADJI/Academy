@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\OffersController;
 use App\Http\Controllers\Admin\SchoolYearController;
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\StudentInformationsController;
+use App\Http\Controllers\StudentScheduleController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureStudentInfosComplete;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,14 @@ Route::get('/', function () {
            Route::post("/choix-de-parcours", "storeAdmission") -> name("storeAdmission");
            Route::get("/cv","cv")->name("seeCV"); 
         });
+
+        Route::controller(StudentScheduleController::class)->group(function()
+        {
+            Route::get('/inscription', 'index') ->name('showInscription');
+            Route::post('/inscription', 'inscription') ->name('chooseSchedule');
+            Route::get('/fiche-ues', 'ues') ->name('seeUes');
+            
+        });
         
     });
     
@@ -147,6 +156,13 @@ Route::middleware(["auth", "admin"]) -> prefix('backoffice') -> group( function(
         Route::post('/definir-une-nouvelle-annee-scolaire', 'store') -> name('StoreYear');
         Route::get('/modifier-annee-scolaire-en-cours', 'showYear') -> name('showYearForUpdate');
         Route::post('/modifier-annee-scolaire-en-cours', 'update') -> name('updateYear');
+    });
+
+    Route::controller(AdmissionController::class) -> group( function()
+    {
+        Route::get('/admissions/en-attente', "show") -> name("showAdmissions");
+        Route::get('/admissions', "all") -> name("allAdmissions");
+        Route::post('/admissions', "treatAdmission") -> name("treatAdmission");
     });
 
   
