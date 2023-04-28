@@ -84,6 +84,10 @@
                     <x-layout.partials.nav-item route-title="Espace étudiant - Fiche UEs" 
                     nav-title="Fiche d'UE" route="seeUes"
                             icon="fa fa-file-alt" />
+
+                    <x-layout.partials.nav-item route-title="Espace étudiant - Payement" 
+                    nav-title="Payement" route="seePayment"
+                            icon="fa fa-money-bill" />
                           
                    
                     

@@ -330,10 +330,10 @@
     </div>
 </div>
 
-<div class="flex mt-8 px-8 justify-end">
-    <button class="btn btn-primary">
+{{-- <div class="flex mt-8 px-8 justify-end">
+    <a href="{{ route("printFicheUE") }}" class="btn btn-primary" target="blank">
         <i class="fa fa-print"></i>
         imprimer
-    </button>
+    </a>
 
-</div>
+</div> --}}

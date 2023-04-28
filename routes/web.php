@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\OffersController;
 use App\Http\Controllers\Admin\SchoolYearController;
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\StudentInformationsController;
 use App\Http\Controllers\StudentScheduleController;
 use App\Http\Controllers\UserController;
@@ -83,7 +85,7 @@ Route::get('/', function () {
            Route::get("/choix-de-parcours","index" ) ->name("showAdmission"); 
            Route::get("/choix-de-parcours/resume", "seeAdmission") -> name("seeAdmission");
            Route::post("/choix-de-parcours", "storeAdmission") -> name("storeAdmission");
-           Route::get("/cv","cv")->name("seeCV"); 
+           
         });
 
         Route::controller(StudentScheduleController::class)->group(function()
@@ -92,6 +94,11 @@ Route::get('/', function () {
             Route::post('/inscription', 'inscription') ->name('chooseSchedule');
             Route::get('/fiche-ues', 'ues') ->name('seeUes');
             
+        });
+
+        Route::controller(PaymentController::class)->group(function()
+        {
+            Route::get("/payement", "see")->name("seePayment");
         });
         
     });
@@ -168,6 +175,12 @@ Route::middleware(["auth", "admin"]) -> prefix('backoffice') -> group( function(
   
    
 }); 
+
+Route::controller(PdfController::class)->group(function()
+{
+    Route::get("/cv", "cv") -> name("seeCV");
+    Route::get("/fiche-ue", "fiche_ue") -> name("printFicheUE");
+});
 
 
 /**
