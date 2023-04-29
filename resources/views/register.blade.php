@@ -1,1 +1,1 @@
-<x-register/>
+<x-layout.partials.register/>

@@ -70,6 +70,7 @@
                 <form action="{{ route('chooseSchedule') }}" method="POST">
                     @csrf
                     <input type="text" name="inscription_id" value='{{ $inscription->id }}' hidden>
+                    <input type="text" name="schedule_id" value='{{ $inscription->schedule->id }}' hidden>
                     <div class="mt-12  rounded-t-lg border border-slate-400 h-full">
                         <p class="font-black text-lg text-gray-600 px-8 py-4 bg-[#F5F5F6]  border-b border-slate-400">
                             Liste des unités d'enseignements obligatoires et optionnelles

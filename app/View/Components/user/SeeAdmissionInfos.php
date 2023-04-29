@@ -36,6 +36,11 @@ class SeeAdmissionInfos extends Component
         return $admissions;
     }
 
+    public function admission_accepted()
+    {
+        return Admission::where("user_id", Auth::id())->where('status', 'accepted') -> exists();
+    }
+
     
 
 

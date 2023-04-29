@@ -85,7 +85,7 @@ class StudentInformationsController extends Controller
         
         StudentInformation::create($informations);
         
-        return view('showStudent');
+        return redirect() -> route('showStudent');
         
     }
 }

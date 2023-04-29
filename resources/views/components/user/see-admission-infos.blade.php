@@ -1,5 +1,5 @@
 @if(Auth::user() -> role == "student")
-    <div class="mb-4">
+    <div class="mb-4" @if($admission_accepted) hidden @endif>
         
         <div class="border rounded border-warning p-2 px-5 font-bold">
             Vos choix de parcours seront étudié par notre commission d'admission des étudiants. 
@@ -9,6 +9,7 @@
         </div>
     </div>
 @endif
+
 <div>
     <div class="elevation-2 p-12 ">
         <p class="font-bold text-lg px-8 pt-8">Choix de parcours</p>
@@ -22,13 +23,6 @@
             @endforeach
         </div>
 
-
-        {{-- <a href="{{ route('seeCV') }}"class="btn btn-navy" target="blank">Votre cv</a> --}}
-
-
-        {{-- <button form="infosForm" class="btn btn-success btn-lg">
-            Modifier
-        </button> --}}
     </div>
 </div>
 

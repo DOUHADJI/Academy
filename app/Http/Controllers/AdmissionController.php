@@ -18,6 +18,13 @@ class AdmissionController extends Controller
      */
     public function index()
     {
+        $has_admissions = Admission::where('user_id', Auth::id())->exists();
+
+        if($has_admissions)
+        {
+            return view("user.see-admission-infos");       
+        }
+        
         return view("user.submit-admission");
     }
 
@@ -96,7 +103,7 @@ class AdmissionController extends Controller
         
        
         
-    //  dd($admissions, $paths);
+    
 
       foreach($admissions as $schedule)
       {

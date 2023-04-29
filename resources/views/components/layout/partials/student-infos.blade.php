@@ -212,8 +212,10 @@
 
             @if(Auth::user() -> role =="student")
             <div class="flex w-full justify-end">
-                <a href="{{ route('updateStudent') }}" class="py-3 px-8 bg-purple-500 text-white hover:bg-purple-400">
-                    informations</a>
+                <a href="{{ route('updateStudent') }}" class="btn btn-lg btn-primary">
+                    <i class="fa fa-user-graduate"></i>
+                    Modifier mes informations
+                </a>
             </div>
             @endif
 

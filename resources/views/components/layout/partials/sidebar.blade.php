@@ -68,15 +68,12 @@
                     <x-layout.partials.nav-item 
                     route-title="Espace étudiant - Mes informations" 
                     nav-title="Profil etudiant" 
-                    route="showStudent" icon="fa fa-home"  />
+                    route="showStudent" icon="fa fa-user-graduate"  />
                    
-                    @if($has_admissions())
+                    
                     <x-layout.partials.nav-item route-title="Espace étudiant - Choix de parcours" nav-title="Choix de parcours" route="seeAdmission"
                     icon="fa fa-graduation-cap" />
-                    @else
-                    <x-layout.partials.nav-item route-title="Espace étudiant - Choix de parcours" nav-title="Choix de parcours" route="showAdmission"
-                            icon="fa fa-graduation-cap" />
-                    @endif
+                    
                     
                     <x-layout.partials.nav-item route-title="Espace étudiant - Inscription" nav-title="Inscription" route="showInscription"
                             icon="fa fa-id-badge" />
@@ -88,6 +85,10 @@
                     <x-layout.partials.nav-item route-title="Espace étudiant - Payement" 
                     nav-title="Payement" route="seePayment"
                             icon="fa fa-money-bill" />
+
+                    <x-layout.partials.nav-item route-title="Espace étudiant - Fiche d'inscription" 
+                        nav-title="Fiche d'inscription" route="seeInscription"
+                        icon="fa fa-file-alt" />
                           
                    
                     

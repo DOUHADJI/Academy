@@ -1,33 +1,24 @@
-<div class="elevation-2 p-12 bg-white">
+@php
+$sum=[];
 
-    <div class="border bg-gray-100/25">
+foreach($payment->inscriptions as $inscription)
+{
+array_push($sum, $inscription->offer->credit);
+}
+
+
+$headers = ['Code', 'Intitulé', 'Crédit', 'Nature', 'Sem. Acad'];
+
+@endphp
+
+<div class="bg-white">
+
+    <div class="p-12">
+
+        <x-file-en-tete title="Fiche d'inscription" :school-year="$payment->school_year" />
+
 
         <div class="">
-            <div class="flex justify-around items-center py-2">
-                <div>
-                    <p class="font-bold text-lg text-center">
-                        <i class="fa fa-file-alt mr-2"></i>
-                        Fiche d'Unités d'enseignement
-                    </p>
-                </div>
-                <img src="{{ asset('images/GU-logo.webp') }}" alt="logo université" class="object-fit h-16">
-                <div>
-                    <p class="  text-center">
-                        <span class="font-bold">
-                            <i class="fa fa-calendar-alt mr-2"></i>
-                            Année acémique :
-                        </span>
-                        @php
-                        $_start = new DateTime($payment->school_year->start);
-                        $_end = new DateTime($payment->school_year->end);
-                        $start = $_start->format('Y');
-                        $end = $_end->format('Y');
-                        @endphp
-                        {{ $start }} - {{ $end }}
-                    </p>
-                </div>
-            </div>
-            <hr class="mt-2 mb-8" />
 
             <div>
                 <div class="px-8 py-6 text-gray-600 ">
@@ -47,189 +38,6 @@
 
                     </div>
 
-                    <div class="grid border-y border-l md:grid-cols-3 ">
-                        <div class="border-r h-full col-span-2">
-                            <p class="text-gray-700 text-lg py-2 border-b font-bold text-center">
-                                <i class="fa fa-user text-lg"></i>
-                                Identité
-                            </p>
-                            <div class="flex flex-wrap gap-4 p-4">
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Nom:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->nom }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Prenom:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->prenom }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Date de naissance:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->date_naissance }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Lieu de naissance:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->lieu_naissance }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Pays de naissance:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->pays_naissance }}</span>
-                                    </p>
-                                </div>
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Nationalité:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->nationalite }}</span>
-                                    </p>
-                                </div>
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Sexe:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->sexe }}</span>
-                                    </p>
-                                </div>
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Situation de famille:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->situation_famille }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Nom de jeune fille:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->nom_jeune_fille }}</span>
-                                    </p>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <div class="border-r h-full">
-                            <p class="text-gray-700 text-lg py-2 border-b font-bold text-center">
-                                <i class="fa fa-address-card text-lg"></i>
-                                Adresse
-                            </p>
-                            <div class="flex flex-wrap gap-4 p-4">
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Email:</span>
-                                        <span class="tracking-widest">{{ $payment->student->email }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Adresse:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->adresse }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Ville:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->ville }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Quartier:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->quartier }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Numéro de téléphone:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->telephone }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Boite postal:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->boite_postal }}</span>
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="border-r border-t col-span-3 h-full">
-                            <p class="text-gray-700 text-lg py-2 text-center border-b w-full font-bold">
-                                <i class="fa fa-graduation-cap text-lg"></i>
-                                Scolarité
-                            </p>
-
-                            <div class="flex flex-wrap gap-4 p-4">
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Année du Bac:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->annee_bac }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Mention au Bac:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->mention_bac }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Date de naissance:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->date_naissance }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold"> Série du Bac:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->serie_bac }}</span>
-                                    </p>
-                                </div>
-
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Pays de naissance:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->pays_naissance }}</span>
-                                    </p>
-                                </div>
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Numéro de table au BAC:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->num_table_bac }}</span>
-                                    </p>
-                                </div>
-                                <div class="pl-6">
-                                    <p class="">
-                                        <span class="mr-2 underline  text-gray-500 font-bold">Grade démandé:</span>
-                                        <span class="tracking-widest">{{ $payment->student->infos->grade }}</span>
-                                    </p>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="my-6" />
 
                     @if(Auth::user() -> role =="payment->student->infos")
                     <div class="flex w-full justify-end">
@@ -241,38 +49,116 @@
                 </div>
             </div>
 
-            
-            <div class="py-2 border-y">
-                <p class="px-12 text-lg text-center">  
-                    <span class="font-bold mr-2">
-                        <i class="fa fa-graduation-cap"></i>
-                    </span>
-                    <span>{{ $payment->schedule->titre_diplome }}</span>
-                </p>
+            <div>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Nom et prénoms
+                            </td>
+                            <td>
+                                {{ $payment->student->infos->nom }} {{ $payment->student->infos->prenom }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Date et lieu de naissance
+                            </td>
+                            <td>
+                                née le
+                                {{ $payment->student->infos->date_naissance }} à
+                                {{ $payment->student->infos->lieu_naissance }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Domaine
+                            </td>
+                            <td>
+                                {{ $payment->schedule->domaine }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Grade
+                            </td>
+                            <td>
+                                {{ $payment->schedule->grade }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Parcours
+                            </td>
+                            <td>
+                                {{ $payment->schedule->titre_diplome }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                {{ $payment->student->email }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Numéro de téléphone
+                            </td>
+                            <td>
+                                {{ $payment->student->infos->telephone }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Adresse
+                            </td>
+                            <td>
+                                {{ $payment->student->infos->quartier }} -
+                                {{ $payment->student->infos->ville }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-           
-            <div class="border-b mb-6 bg-gray-100/25">
-                <p class="font-bold text-center text-lg py-2">
-                    Unités d'enseignements
-                </p>
-            </div>
-            
 
-            <div class="px-12">
-                @php
-                $headers = ['Code', 'Intitulé', 'Crédit', 'Nature', 'Sem. Acad'];
-                @endphp
 
-                <x-layout.partials.table-with-filter table-id="inscriptionsTable">
+            <div class="mt-12">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="text-center font-bold">
+                                    {{ $payment->schedule->titre_diplome }}
+                                </p>
+                            </td>
+                        </tr>
 
-                    <x-slot:headers>
+                        <tr>
+                            <td>
+                                <p class="text-center font-medium">
+                                    Unités d'enseignements choisis
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
 
-                        @foreach ($headers as $header)
-                        <x-layout.partials.sortable-th :title="$header" />
-                        @endforeach
-                    </x-slot:headers>
-                    <x-slot:body>
-                        @foreach ($payment->inscriptions as $inscription)
+                            <div class="p-8 bg-white">
+                                <x-layout.partials.table-with-filter table-id="inscriptionsTable">
+                                    <x-slot:headers>
+                                        @foreach ($headers as $header)
+                                        <x-layout.partials.sortable-th :title="$header" />
+                                        @endforeach
+                                    </x-slot:headers>
+                                    <x-slot:body>
+                                        @foreach ($payment->inscriptions as $inscription)
                         <tr role="row" class="odd">
                             <td>
                                 {{ $inscription->offer->code }}
@@ -289,51 +175,50 @@
                             <td>
                                 {{ $inscription->offer->semestre_academique }}
                             </td>
-                            
+
                         </tr>
                         @endforeach
 
-                    </x-slot:body>
+                        </x-slot:body>
 
-                    <tr class="w-full my-3 bg-blue-300 text-gray-500 font-bold uppercase border">
-                        <th></th>
-                        <th class="w-full my-3 text-center">
-                            Total
-                        </th>
-                        <th class=" w-full my-3 text-center">
-                            @php
-                            $sum = [];
-                            @endphp
-                            @foreach ($payment->inscriptions as $inscription)
-                            {{-- @if ($offer->semestre == $i + 1) --}}
-                            @php
-                            $sum[] = $inscription->offer->credit;
-                            @endphp
-                            {{-- @endif --}}
-                            @endforeach
-                            @php
-                            $total = array_sum($sum);
-                            @endphp
-                            {{ $total }}
-                        </th>
-                        <th></th>
-                        <th></th>
-                        
-                    </tr>
+                        <tr class="w-full my-3 bg-blue-300 text-gray-500 font-bold uppercase border">
+                            <th></th>
+                            <th class="w-full my-3 text-center">
+                                Total
+                            </th>
+                            <th class=" w-full my-3 text-center">
+                                @php
+                                $total = array_sum($sum);
+                                @endphp
+                                {{ $total }}
+                            </th>
+                            <th></th>
+                            <th></th>
 
-                </x-layout.partials.table-with-filter>
+                        </tr>
+
+                        </x-layout.partials.table-with-filter>
             </div>
 
+            </tr>
 
+            </tbody>
+            </table>
         </div>
 
+
+        <x-file-pied-de-page />
     </div>
+
+
+
 </div>
+
 
 {{-- <div class="flex mt-8 px-8 justify-end">
     <a href="{{ route("printFicheUE") }}" class="btn btn-primary" target="blank">
-        <i class="fa fa-print"></i>
-        imprimer
-    </a>
+<i class="fa fa-print"></i>
+imprimer
+</a>
 
 </div> --}}

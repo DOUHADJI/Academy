@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inscription;
 use App\Models\Offer;
 use App\Models\Payment;
+use App\Models\Schedule;
 use App\Models\SchoolYear;
 use App\Models\StudentSchedule;
 use Illuminate\Http\Request;
@@ -26,9 +27,10 @@ class StudentScheduleController extends Controller
             $school_year = SchoolYear::orderBy("created_at", "desc") -> first();
 
             $hasAlreadyInscription = Inscription::where("school_year_id", $school_year->id)->where("student_schedule_id", $request->inscription_id) -> exists();
+            
             if($hasAlreadyInscription)
-            {              
-                Inscription::where("school_year_id", $school_year->id)->where("student_schedule_id", $request->inscription_id) -> delete();
+            {            
+                Inscription::where("school_year_id", $school_year->id)->where("student_schedule_id", $request->schedule_id) -> delete();
             }
             
             $payment = Payment::create([
@@ -36,11 +38,11 @@ class StudentScheduleController extends Controller
                 "status" => "pending",
                 "school_year_id" => $school_year->id,
                 "user_id" => Auth::id(),
-                "schedule_id" => $request->inscription_id
+                "schedule_id" => $request->schedule_id
             ]);
             
-            $inputs =  $request->collect()->except("_token","inscription_id");
-
+            $inputs =  $request->collect()->except("_token","inscription_id","schedule_id");
+            
             foreach($inputs as $data)
             {
                 Inscription::create([
