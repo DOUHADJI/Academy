@@ -36,6 +36,7 @@ Route::get('/', function () {
  */
 
 Route::middleware('guest') -> group(function () {
+    
     Route::controller(RegisterController::class) -> group(function () {
         Route::get('/register', 'index') ->name('showRegister');
         Route::post('/register', 'store') ->name('handleRegister');
@@ -78,6 +79,11 @@ Route::middleware(['auth', "student"]) -> group(function () {
             Route::get("/choix-de-parcours", "index") ->name("seeAdmission");
             Route::post("/choix-de-parcours", "storeAdmission") -> name("storeAdmission");
 
+        });
+
+        Route::controller(SchoolYearController::class)->group(function()
+        {
+            Route::get("decoupage-annee-academique", "student_see")->name('studentSeeYear');
         });
 
         /**
@@ -179,7 +185,7 @@ Route::middleware(["auth", "admin"]) -> prefix('backoffice') -> group(function (
 
     Route::controller(SchoolYearController::class) -> group(function () {
         Route::get('/annee-scolaire-en-cours', "index") -> name('showYear');
-        Route::get('/definir-une-nouvelle-annee-scolaire', 'show') -> name('defineYear');
+        Route::get('/definir-une-nouvelle-annee-scolaire', 'define') -> name('defineYear');
         Route::post('/definir-une-nouvelle-annee-scolaire', 'store') -> name('StoreYear');
         Route::get('/modifier-annee-scolaire-en-cours', 'showYear') -> name('showYearForUpdate');
         Route::post('/modifier-annee-scolaire-en-cours', 'update') -> name('updateYear');

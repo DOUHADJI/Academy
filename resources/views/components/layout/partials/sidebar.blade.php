@@ -46,9 +46,10 @@
                     
                     <x-layout.partials.nav-item-with-children 
                         nav-title="Année scolaire" icon="fas fa-calendar"
-                        page-title="" >
+                        page-title="Backoffice - Année scolaire en cours" >
 
                         <x-layout.partials.nested-nav-item nav-title="En cours" route="showYear" />
+                        <x-layout.partials.nested-nav-item nav-title="+ nouvelle année" route="defineYear" />
 
                     </x-layout.partials.nav-item-with-children>
                    
@@ -90,7 +91,13 @@
                         nav-title="Fiche d'inscription" route="seeInscription"
                         icon="fa fa-file-alt" />
                           
-                   
+                        <x-layout.partials.nav-item-with-children 
+                        nav-title="Informations utiles" icon="fas fa-info"
+                        page-title="Espace étudiant - Informations utiles" >
+
+                        <x-layout.partials.nested-nav-item nav-title="Année Académique" route="studentSeeYear" />
+
+                    </x-layout.partials.nav-item-with-children>
                     
 
 

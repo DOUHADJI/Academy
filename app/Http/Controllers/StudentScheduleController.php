@@ -24,7 +24,7 @@ class StudentScheduleController extends Controller
 
         if($hasSchedule)
         {
-            $school_year = SchoolYear::orderBy("created_at", "desc") -> first();
+            $school_year = SchoolYear::where("is_current", 1)->first();
 
             $hasAlreadyInscription = Inscription::where("school_year_id", $school_year->id)->where("student_schedule_id", $request->inscription_id) -> exists();
             

@@ -23,7 +23,7 @@ class EnsureStudentHasInscriptionInSchedule
         $schedule_bool = StudentSchedule::where('user_id', Auth::id())->exists();
         $schedule = StudentSchedule::where('user_id', Auth::id())->first()->schedule;
         
-        $school_year = SchoolYear::orderBy("created_at", "desc")->first();
+        $school_year = SchoolYear::where("is_current", 1)->first();
         $payment_bool = Payment::where('school_year_id', $school_year->id)->where("user_id", Auth::id())->where('schedule_id', $schedule->id)->exists();
 
        // dd($schedule, $school_year,$schedule_bool, $payment_bool);

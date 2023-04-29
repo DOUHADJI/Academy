@@ -16,14 +16,14 @@ return new class extends Migration
             $table -> date("start");
             $table -> date("end");
             
-            $table -> date("extend_start");
-            $table -> date("extend_end");
+            $table -> date("extend_start")->nullable();
+            $table -> date("extend_end")->nullable();
             
             $table -> date("inscription_start");
             $table -> date("inscription_end");
             
-            $table -> date("extend_inscription_start");
-            $table -> date("extend_inscription_end");
+            $table -> date("extend_inscription_start")->nullable();
+            $table -> date("extend_inscription_end")->nullable();
             
             $table -> date("harmattan_start");
             $table -> date("harmattan_end");  

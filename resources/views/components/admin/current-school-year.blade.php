@@ -1,18 +1,21 @@
 <div class="px-12">
-    <div class="grid gap-24 sm:grid-cols-2 md:grid-cols-3">
+    
+    <x-layout.partials.decoupage-annee :year='$year' />
+
+    {{-- <div class="grid gap-24 sm:grid-cols-2 md:grid-cols-3">
         <div class="info-box  bg-warning">
             <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
 
             <div class="info-box-content">
                 <span class="info-box-text font-bold">Année scolaire</span>
-                <span class="info-box-number">du {{ $year()->start }} au {{ $year()->end }} </span>
+                <span class="info-box-number">du {{strftime("%B %d, %Y",strtotime($year()->start)) }} au {{strftime("%B %d, %Y",strtotime($year()->end)) }} </span>
 
                 <div class="progress">
-                    <div class="progress-bar proress" style="width: {{ $remaning($year()->start, $year()->end) }}%">
+                    <div class="progress-bar proress" style="width: {{ $remaning($year()->start, $year()->end))) }}%">
                     </div>
                 </div>
                 <span class="progress-description">
-                    Jours restants {{ $remaning($year()->start, $year()->end) }}
+                    Jours restants {{ $remaning($year()->start, $year()->end))) }}
                 </span>
             </div>
             <!-- /.info-box-content -->
@@ -26,14 +29,14 @@
 
             <div class="info-box-content">
                 <span class="info-box-text font-bold">Semestre Harmattan</span>
-                <span class="info-box-number">du {{ $year()->start }} au {{ $year()->end }} </span>
+                <span class="info-box-number">du {{strftime("%B %d, %Y",strtotime($year()->start)) }} au {{strftime("%B %d, %Y",strtotime($year()->end)) }} </span>
 
                 <div class="progress">
-                    <div class="progress-bar proress" style="width: {{ $remaning($year()->start, $year()->end) }}%">
+                    <div class="progress-bar proress" style="width: {{ $remaning($year()->start, $year()->end))) }}%">
                     </div>
                 </div>
                 <span class="progress-description">
-                    Jours restants {{ $remaning($year()->start, $year()->end) }}
+                    Jours restants {{ $remaning($year()->start, $year()->end))) }}
                 </span>
             </div>
             <!-- /.info-box-content -->
@@ -44,20 +47,20 @@
 
             <div class="info-box-content">
                 <span class="info-box-text font-bold">Semestre Mousson</span>
-                <span class="info-box-number">du {{ $year()->start }} au {{ $year()->end }} </span>
+                <span class="info-box-number">du {{strftime("%B %d, %Y",strtotime($year()->start)) }} au {{strftime("%B %d, %Y",strtotime($year()->end)) }} </span>
 
                 <div class="progress">
-                    <div class="progress-bar proress" style="width: {{ $remaning($year() ->mousson_start, $year()->mousson_end) }}%">
+                    <div class="progress-bar proress" style="width: {{ $remaning($year() ->mousson_start, $year()->mousson_end))) }}%">
                     </div>
                 </div>
                 <span class="progress-description">
-                    Jours restants {{ $remaning($year()->start, $year()->end) }}
+                    Jours restants {{ $remaning($year()->start, $year()->end))) }}
                 </span>
             </div>
             <!-- /.info-box-content -->
         </div>
 
-    </div>
+    </div> --}}
 
     <div class="card card-danger">
         <div class="card-header">

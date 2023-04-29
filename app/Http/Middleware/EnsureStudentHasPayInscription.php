@@ -18,7 +18,7 @@ class EnsureStudentHasPayInscription
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $school_year = SchoolYear::orderBy("created_at", "desc")->first();
+        $school_year = SchoolYear::where("is_current", 1)->first();
 
         $payment_bool = Payment::where('school_year_id', $school_year->id)->where("user_id", Auth::id())->where('status', 'payed')->exists();
 

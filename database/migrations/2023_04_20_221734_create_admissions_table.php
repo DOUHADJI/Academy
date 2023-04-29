@@ -16,6 +16,12 @@ return new class extends Migration
             $table -> string('status') -> default("received");
             $table -> foreignId('schedule_id')-> constrained('schedules');
             $table -> foreignId('user_id')-> constrained('users');
+            $table -> boolean("treated") -> default(false);
+            $table -> string('releve_bepc');
+            $table -> string('releve_bac_1');
+            $table -> string('releve_bac_2');
+            $table -> string('lettre_motivation');
+            $table -> string('cv');
             $table->timestamps();
         });
     }

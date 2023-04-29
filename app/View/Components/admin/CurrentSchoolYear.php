@@ -20,7 +20,7 @@ class CurrentSchoolYear extends Component
 
     public function year()
     {
-        return SchoolYear::orderBy('created_at', "desc") -> first();
+        return SchoolYear::where('is_current', 1) -> first();
     }
 
     public function remaning($start, $end)

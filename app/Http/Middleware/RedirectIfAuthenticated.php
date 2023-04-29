@@ -21,7 +21,16 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect() -> route("showStudent");
+
+                if(Auth::user()=="student")
+                {
+                    return redirect() -> route("showStudent");     
+                }
+
+                if(Auth::user()=="admin")
+                {
+                    return redirect() -> route("showYear");     
+                }
             }
         }
 

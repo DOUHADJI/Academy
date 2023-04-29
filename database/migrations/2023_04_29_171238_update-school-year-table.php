@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('admissions', function (Blueprint $table) {
-            $table -> string('releve_bepc');
-            $table -> string('releve_bac_1');
-            $table -> string('releve_bac_2');
-            $table -> string('lettre_motivation');
-            $table -> string('cv');
+        Schema::table('school_years', function (Blueprint $table) {
+            $table->boolean("is_current")->default(true);
         });
     }
 
@@ -25,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('admissions', function (Blueprint $table) {
+        Schema::table('school_years', function (Blueprint $table) {
             //
         });
     }
