@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class StudentScheduleController extends Controller
 {
     public function index()
-    {        
+    {
         return view('user.choose-schedule');
     }
 
@@ -22,17 +22,15 @@ class StudentScheduleController extends Controller
     {
         $hasSchedule = StudentSchedule::where("user_id", Auth::id()) -> exists();
 
-        if($hasSchedule)
-        {
+        if($hasSchedule) {
             $school_year = SchoolYear::where("is_current", 1)->first();
 
             $hasAlreadyInscription = Inscription::where("school_year_id", $school_year->id)->where("student_schedule_id", $request->inscription_id) -> exists();
-            
-            if($hasAlreadyInscription)
-            {            
+
+            if($hasAlreadyInscription) {
                 Inscription::where("school_year_id", $school_year->id)->where("student_schedule_id", $request->schedule_id) -> delete();
             }
-            
+
             $payment = Payment::create([
                 "code" => time(),
                 "status" => "pending",
@@ -40,11 +38,10 @@ class StudentScheduleController extends Controller
                 "user_id" => Auth::id(),
                 "schedule_id" => $request->schedule_id
             ]);
-            
-            $inputs =  $request->collect()->except("_token","inscription_id","schedule_id");
-            
-            foreach($inputs as $data)
-            {
+
+            $inputs =  $request->collect()->except("_token", "inscription_id", "schedule_id");
+
+            foreach($inputs as $data) {
                 Inscription::create([
                     "school_year_id" => $school_year->id,
                     "offer_id" => $data,
@@ -52,24 +49,22 @@ class StudentScheduleController extends Controller
                     "student_schedule_id" => $request->inscription_id
                 ]);
             }
-          
+
             return redirect()->route("seeUes");
-        }
-        else
-        {
+        } else {
             $id = $request->choice;
-            
+
             StudentSchedule::create([
                 "code" => time(),
                 "user_id" => Auth::id(),
                 "schedule_id" => $id
             ]);
-            
+
             return redirect()->route("showInscription");
         }
-        
 
-        
+
+
     }
 
     public function ues()
