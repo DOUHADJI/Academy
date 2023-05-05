@@ -2,10 +2,10 @@
 <nav class="main-header navbar navbar-expand bg-yellow-500 navbar-dark py-3">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      {{-- <li class="nav-item d-none d-sm-inline-block">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        {{-- <li class="nav-item d-none d-sm-inline-block">
         <a href="../../index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -27,8 +27,8 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      {{-- <li class="nav-item dropdown">
+        <!-- Messages Dropdown Menu -->
+        {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -85,8 +85,8 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li> --}}
-      <!-- Notifications Dropdown Menu -->
-      {{-- <li class="nav-item dropdown">
+        <!-- Notifications Dropdown Menu -->
+        {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -113,41 +113,59 @@
         </div>
       </li> --}}
 
-      <!-- User Dropdown -->
+        <!-- User Dropdown -->
 
-      <li class="nav-item dropdown user-menu mr-8">
-        <a href="#" class="flex nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <img src="{{ asset("images/avatar.png") }}" class="user-image img-circle elevation-2" alt="User Image">
-          <span class="d-none d-md-inline">{{ Auth::user() -> name }} </span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
-          <!-- User image -->
-          <li class="user-header bg-secondary">
-            <img src="{{ asset("images/avatar.png") }}" class="img-circle elevation-2" alt="User Image">
-            <p>
-              {{ Auth::user() -> name }}
-              <small>{{ Auth::user() -> email }}</small>
-            </p>
-          </li>
-          <!-- Menu Body -->
-         
-          <!-- Menu Footer-->
-          <li class="user-footer">
-            {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
-            <a href="{{ route("handleLogout") }}" class="btn btn-default btn-flat float-right">Déconnexion</a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
+        <li class="nav-item dropdown user-menu mr-8">
+            <a href="#" class="flex nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <img @if(Auth::user()->infos)
+                @if (Auth::user()->infos->sexe == "Féminin")
+                src="{{ asset("images/female_avatar.svg") }}"
+                @else
+                src="{{ asset("images/male_avatar.svg") }}"
+                @endif
+                @else
+                src="{{ asset("images/male_avatar.svg") }}"
+                @endif
 
-      </li>
+                class="user-image img-circle elevation-2" alt="User Image">
+                <span class="d-none d-md-inline">{{ Auth::user() -> name }} </span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                <!-- User image -->
+                <li class="user-header bg-secondary">
+                    <img @if(Auth::user()->infos)
+                    @if (Auth::user()->infos->sexe == "Féminin")
+                    src="{{ asset("images/female_avatar.svg") }}"
+                    @else
+                    src="{{ asset("images/male_avatar.svg") }}"
+                    @endif
+                    @else
+                    src="{{ asset("images/male_avatar.svg") }}"
+                    @endif class="img-circle elevation-2" alt="User Image">
+                    <p>
+                        {{ Auth::user() -> name }}
+                        <small>{{ Auth::user() -> email }}</small>
+                    </p>
+                </li>
+                <!-- Menu Body -->
+
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
+                    <a href="{{ route("handleLogout") }}" class="btn btn-default btn-flat float-right">Déconnexion</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+
+        </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+        <li class="nav-item">
+            <a class="nav-link">
+                <i class="fas fa-th-large"></i>
+            </a>
+        </li>
     </ul>
-  </nav>
-  <!-- /.navbar -->
+</nav>
+<!-- /.navbar -->

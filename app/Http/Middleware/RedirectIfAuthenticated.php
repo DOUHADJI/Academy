@@ -31,6 +31,11 @@ class RedirectIfAuthenticated
                 {
                     return redirect() -> route("showYear");     
                 }
+
+                if(Auth::user()=="professor")
+                {
+                    return redirect() -> route("showExamsProf");     
+                }
             }
         }
 

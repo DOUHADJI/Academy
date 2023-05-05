@@ -47,6 +47,11 @@ class LoginController extends Controller
             {
                 return redirect()-> route('showSchools');
             };
+
+            if(Gate::allows('is-professor'))
+            {
+                return redirect()-> route('showExamsProf');
+            };
             
         }
  

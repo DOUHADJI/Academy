@@ -23,7 +23,8 @@
                     @foreach ($admissions() as $admission)
                         <tr role="row" class="odd">
                             <td>
-                                {{ $admission->student->name }} 
+                                {{ $admission->student->infos->nom }} 
+                                {{ $admission->student->infos->prenom }} 
                             </td>
                             <td>
                                 Série : {{ $admission->student->infos->serie_bac }} 

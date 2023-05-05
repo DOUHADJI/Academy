@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\OffersController;
 use App\Http\Controllers\Admin\SchoolYearController;
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\StudentInformationsController;
@@ -116,6 +117,11 @@ Route::middleware(['auth', "student"]) -> group(function () {
                     Route::get("/fiche-ue", "fiche_ue") -> name("printFicheUE");
                     Route::get("/fiche-de-payement", "payment") -> name("downloadPayment");
                 });
+
+                Route::controller(ExamController::class)->group(function()
+                {
+                    Route::get('/examens', "index")->name('showExams');
+                });
                 
             });    
                 
@@ -147,7 +153,18 @@ Route::middleware(['auth', "student"]) -> group(function () {
 
 Route::get('/tableau-de-bord', [UserController::class, 'index']) -> middleware('auth') ->name('showDashboard');
 
+/**
+ * Professor routes
+*/
 
+Route::middleware("professor")->prefix("prof-space")->group(function()
+{
+    Route::controller(ExamController::class)->group(function()
+    {
+        Route::get('/examens', "p_index")->name("showExamsProf");    
+    });
+    
+});
 
 /**
  * Admin panel routes
