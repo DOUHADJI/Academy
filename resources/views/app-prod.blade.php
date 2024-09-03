@@ -19,7 +19,6 @@
     <body class="font-sans antialiased text-xs text-gray-700">
 
         <div id="root" class="min-h-screen">
-            in prod 
         </div>
         <script src="{{ asset('build/assets/app-production.js') }}"></script>
     </body>
