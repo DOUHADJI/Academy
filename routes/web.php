@@ -22,7 +22,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+
+    if (env("APP_ENV") == "local") {
+        return view('app');
+    }
+
+    if (env("APP_ENV") == "production") {
+        return view('app-prod');
+    }
 })->middleware('guest')->name('login');
 
 Route::post('/login', [LoginController::class, 'login']);
@@ -31,5 +38,12 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::fallback(function () {
-    return view('app');
+
+    if (env("APP_ENV") === "local") {
+        return view('app');
+    }
+
+    if (env("APP_ENV") === "production") {
+        return view('app-prod');
+    }
 })->middleware('auth');

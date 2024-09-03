@@ -6,6 +6,8 @@ import AdminHome from "@/Pages/AdminPanel/AdminHome";
 import PageNotFound from "@/Pages/404";
 import ClassesPage from "@/Pages/AdminPanel/Classes/ClassesPage";
 import FacultiesPage from "@/Pages/AdminPanel/Faculties/FacultiesPage";
+import React from "react";
+
 
 export const router = createBrowserRouter([
     {

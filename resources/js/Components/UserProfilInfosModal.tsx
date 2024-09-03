@@ -22,6 +22,7 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { CustomModal } from './CustomModal';
 import CustomFormikTextInput from './CustomFormikTextInput';
+import { BsDot } from 'react-icons/bs';
 
 const UserProfilInfosModal: FunctionComponent<{
   open: boolean;
@@ -104,6 +105,7 @@ const UserProfilInfosModal: FunctionComponent<{
                   label="Nom"
                   errors={errors}
                   touched={touched}
+                  icon={BsDot}
                 />
 
                 <CustomFormikTextInput
@@ -111,6 +113,7 @@ const UserProfilInfosModal: FunctionComponent<{
                   label="Prénom(s)"
                   errors={errors}
                   touched={touched}
+                  icon={BsDot}
                 />
 
                 <CustomFormikTextInput
@@ -118,6 +121,7 @@ const UserProfilInfosModal: FunctionComponent<{
                   label="Nom d'utilisateur"
                   errors={errors}
                   touched={touched}
+                  icon={BsDot}
                 />
 
                 <CustomFormikTextInput
@@ -126,6 +130,7 @@ const UserProfilInfosModal: FunctionComponent<{
                   type="date"
                   errors={errors}
                   touched={touched}
+                  icon={BsDot}
                 />
 
                 <CustomFormikTextInput
@@ -133,6 +138,7 @@ const UserProfilInfosModal: FunctionComponent<{
                   label="Contact"
                   errors={errors}
                   touched={touched}
+                  icon={BsDot}
                 />
 
                 <CustomFormikTextInput
@@ -140,6 +146,7 @@ const UserProfilInfosModal: FunctionComponent<{
                   label="Addresse email"
                   errors={errors}
                   touched={touched}
+                  icon={BsDot}
                 />
               </div>
               <div className="flex justify-end gap-6 py-4">

@@ -1,5 +1,5 @@
 import { Spinner } from "@nextui-org/react";
-import { Children, FunctionComponent, MouseEventHandler, ReactNode } from "react";
+import React,  { Children, FunctionComponent, MouseEventHandler, ReactNode } from "react";
 
 const CustomButton: FunctionComponent<{
     color?: "default" | "current" | "white" | "primary" | "secondary" | "success" | "warning" | "danger" | undefined;

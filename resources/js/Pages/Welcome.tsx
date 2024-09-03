@@ -1,5 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
+import React from 'react';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<{ laravelVersion: string, phpVersion: string }>) {
     const handleImageError = () => {
